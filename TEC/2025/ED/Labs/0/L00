@@ -1,0 +1,4 @@
+//Hola , este es mi primer programa en C++. espero no morir en el intento :p  este es el ejercicio de los bolos xddd. 
+//Se tiene primero el mod 
+
+auto Mod = 1000000007
