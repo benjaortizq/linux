@@ -23,12 +23,8 @@ int main () {
     int entrada ;
     cin >> entrada ;
     int lista [entrada];
-    for (int i=0 ; i<entrada ; i++) { //Se usa un for de lista por que se necesita almacenar los valores , lista de n elementos . 
-        int c_p;
-        cin >> c_p;
-        lista[i] = c_p;
-    }
-    for (int j=0 ; j<entrada ; j++) {//for que recorre la lista para asi tirar el calculo. 
+    for (int i=0 ; i<entrada ; i++) {int c_p;cin >> c_p;lista[i] = c_p;}
+    for (int j=0 ; j<entrada ; j++) {
         cout << sum_bolos_niv(lista[j]) << endl;
     }
 }
