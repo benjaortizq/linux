@@ -11,7 +11,6 @@ int main () {
         } else if (letra >= 97 && letra <= 122) {
             frec[letra - 97]++;
         }
-        cout << letra << " ";
     }
     int ia=-1,ib=-1,ic=-1,fa=-1,fb=-1,fc=-1;//Almacenamiento de frecuenciasy letras
     for(int i=0;i<26;i++)
