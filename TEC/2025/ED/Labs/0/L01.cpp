@@ -5,12 +5,13 @@ int main () {
     string entrada; //entrada es un string unicamente 
     cin >> entrada;  // lo que se ponga en consola es mi entrada
     for (int l =0;l<entrada.length();l++){  //esto es o(N), dependiente del largo del la entrada
-        char letra = entrada[l]; 
+        int letra = entrada[l]; 
         if (letra >= 65 && letra <= 90) {
-            frec[letra - 'A']++;
+            frec[letra - 65]++;
         } else if (letra >= 97 && letra <= 122) {
-            frec[letra & ~32]++;
+            frec[letra - 97]++;
         }
+        cout << letra << " ";
     }
     int ia=-1,ib=-1,ic=-1,fa=-1,fb=-1,fc=-1;//Almacenamiento de frecuenciasy letras
     for(int i=0;i<26;i++)
@@ -32,6 +33,6 @@ int main () {
             fc=f;
         }
     }
-    cout<<char('A'+ia)<<" "<<fa<<" "<<char('A'+ib)<<" "<<fb<<" "<<char('A'+ic)<<" "<<fc<<"\n";
+    cout<<char(65+ia)<<" "<<fa<<" "<<char(65+ib)<<" "<<fb<<" "<<char(65+ic)<<" "<<fc<<"\n";
 }
 
