@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-int frec[26] ={0}; //Creacion de una lista de 26 elementos para almacenar la frecuencia de las letras 
+int frec[26] ={0}; //Creacion de un array  de 26 elementos para almacenar la frecuencia de las letras 
 int main () {
     string entrada; //entrada es un string unicamente 
     cin >> entrada;  // lo que se ponga en consola es mi entrada
