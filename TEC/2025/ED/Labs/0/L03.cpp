@@ -9,7 +9,10 @@ int main (){
         cout << -1 << endl ;
         return 0 ;
     }
+    char matriz[F][C];
     for (int i=0 ; i< F; i++ ) {
-        
+        for (int j = 0 ; j < C; j++) {
+            cin >> matriz[i][j];
+        }
     }
 }
