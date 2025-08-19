@@ -189,7 +189,7 @@ int main (){
     
     // Verificar ciclo
     if (processado < lista.size) {
-        cout << "El grafo tiene ciclos" << endl;
+        cout << -1 << endl;
     } else {
         for (Node* node = result.head; node != nullptr; node = node->next) {
             cout << node->value << " ";
