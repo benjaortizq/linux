@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
 //ejercicio 4 , matriz cuadrada mas grande 
-
-
 int main (){
     int F , C  ;
     cin >> F >> C ;
