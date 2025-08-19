@@ -5,7 +5,7 @@ all: compile_all
 compile_all:
 	g++ -o L00 L00.cpp
 	g++ -o L01 L01.cpp
-	g++ -o L02 L02.cpp
+	g++ -o L02 L02.cpp	
 	g++ -o L03 L03.cpp
 	g++ -o L04 L04.cpp
 	g++ -o L05 L05.cpp
