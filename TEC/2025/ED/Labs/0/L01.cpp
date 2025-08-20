@@ -13,25 +13,11 @@ int main () {
         }
     }
     int ia=-1,ib=-1,ic=-1,fa=-1,fb=-1,fc=-1;//Almacenamiento de frecuenciasy letras
-    for(int i=0;i<26;i++)
-        {int f=frec[i]; 
-        if(f>fa || (f==fa && i<ia)){
-            ic=ib;
-            fc=fb;
-            ib=ia;
-            fb=fa;
-            ia=i;
-            fa=f;
-        }else if(f>fb || (f==fb && i<ib)){
-            ic=ib;
-            fc=fb;
-            ib=i;
-            fb=f;
-        }else if(f>fc || (f==fc && i<ic)){
-            ic=i;
-            fc=f;
-        }
+    for(int i=0;i<26;i++){int f=frec[i]; 
+        if(f>fa || (f==fa && i<ia)){ic=ib;fc=fb;ib=ia;fb=fa;ia=i;fa=f;
+        }else if(f>fb || (f==fb && i<ib)){ic=ib;fc=fb;ib=i;fb=f;}
+        else if(f>fc || (f==fc && i<ic)){ic=i;fc=f;}
     }
-    cout<<char(65+ia)<<" "<<fa<<" "<<char(65+ib)<<" "<<fb<<" "<<char(65+ic)<<" "<<fc<<"\n";
+    std::cout<<char(65+ia)<<" "<<fa<<" "<<char(65+ib)<<" "<<fb<<" "<<char(65+ic)<<" "<<fc<<"\n";
 }
 

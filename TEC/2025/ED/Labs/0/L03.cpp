@@ -4,34 +4,19 @@ using namespace std;
 int main (){
     int F , C  ;
     cin >> F >> C ;
-    if (F <=0 || F >=1e4|| C <=0 || C>=1e4) {
-        cout << -1 << endl ;
-        return 0 ;
-    }
     int matriz[F][C]; //crea matriz de caracteres 
     for (int i=0 ; i< F; i++ ) { // recibe la matriz 
         for (int j = 0 ; j < C; j++) {
             char letra ;
             cin >> letra ;
-            if (letra >='A' && letra <= 'Z') {
-                matriz[i][j] = 1; // si es mayuscula , escribe un 1 en la matriz 
-            } else if (letra >= 'a' && letra <= 'z') {
-                matriz[i][j] = 0; // si es minuscula , escribe un 0 en la matriz 
-            } else {
-                cout << -1 << endl ; // si no es una letra , devuelve -1
-                return 0 ;
-            }
+            matriz[i][j] = (letra >= 'A' && letra <= 'Z') ? 1 : 0;
         }
     }
     int maximo_actual=0 ;
-    for (int i = 1 ; i < F ; i++) { //recorre filas 
-        for (int j = 1 ; j < C ; j++) { //cols 
+    for (int i = 1 ; i < F ; i++) { for (int j = 1 ; j < C ; j++) {
             if (matriz[i][j] == 1) { // si el valor en la posicion es >=1 
                     matriz[i][j] = min(matriz[i-1][j], min(matriz[i][j-1], matriz[i-1][j-1])) + 1;
-                    maximo_actual = max(maximo_actual, matriz[i][j]); // actualizo el maximo actual
-            }
-        }
-    }
+                    maximo_actual = max(maximo_actual, matriz[i][j]);}}}
     cout << maximo_actual << endl ; // devuelvo el area del cuadrado
 }
 
