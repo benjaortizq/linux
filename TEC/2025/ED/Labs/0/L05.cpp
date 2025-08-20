@@ -1,12 +1,12 @@
 #include <iostream>
 using namespace std;
-const long long MOD = 1000000007;
-const int MAX_N = 2005;
+const long long MOD = 1000000007; //mod que hay que usar 
+const int MAX_N = 2005;//maximo rango de primos 
 
 bool esPrimo[MAX_N];
 long long fact[MAX_N], invFact[MAX_N];
 
-void criba() {
+void criba() { ///funcion para encontrar todos los primos hasta MAX_N usando la criba de eratostenes
     for (int i = 0; i < MAX_N; i++) {
         esPrimo[i] = true;
     }
@@ -20,7 +20,7 @@ void criba() {
     }
 }
 
-long long potencia(long long a, long long b) {
+long long potencia(long long a, long long b) { //funcion para calcular a^b mod MOD usando exponenciacion rapida
     long long res = 1;
     a = a % MOD;
     while (b > 0) {
@@ -33,10 +33,10 @@ long long potencia(long long a, long long b) {
 }
 
 long long modInverso(long long n) {
-    return potencia(n, MOD - 2);
+    return potencia(n, MOD - 2); //usando el teorema de fermat para calcular el inverso modular
 }
 
-void precomputarFactoriales() {
+void precomputarFactoriales() { //funcion para precomputar factoriales e inversos modulares de factoriales
     fact[0] = 1;
     for (int i = 1; i < MAX_N; i++) {
         fact[i] = (fact[i - 1] * i) % MOD;
@@ -54,34 +54,26 @@ long long coeficiente_binomial (int n, int k) {
 
 
 int main() {
-    // Precomputación
     criba();
-    precomputarFactoriales();
-    
+    precomputarFactoriales(); 
     int Q;
     cin >> Q;
-    
     for (int q = 0; q < Q; q++) {
         int Y, X;
         cin >> Y >> X;
-        
         long long result = 0;
-        
-        // Para cada longitud entre X e Y
+        // para cada len entre x y y inclusive
         for (int length = Y; length <= X; length++) {
             // Para cada posible cantidad de unos
             for (int ones = 0; ones <= length; ones++) {
                 int zeros = length - ones;
                 
-                // Verificar si ambas cantidades son primas
+                // Verificar si dos son primas
                 if (esPrimo[ones] && esPrimo[zeros]) {
                     result = (result + coeficiente_binomial(length, ones)) % MOD;
                 }
             }
         }
-        
         cout << result << endl;
     }
-    
-    return 0;
 }
