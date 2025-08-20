@@ -16,7 +16,7 @@ int main (){
         int B;
         cin >> H1 >> H2 >> B;
         if (H1 <= H2) {
-            cout << 0 << endl; // si ya son iguales, no hay que hacer nada
+            cout << 0 << endl; // si ya son iguales o mayora, 0
             continue;}
         respuestas[t] = calculoN(H1, H2, B);}
     for (int t=0; t<T; t++) {cout << respuestas[t] << endl; }
