@@ -37,10 +37,7 @@ class Vector {          //para no hacer tanto despelote, class vector funciona i
     int back(); //*done
     void push_back(int n );//!hacer
     int pop_back ();//!hacer
-
-
-
-
+    void insert (int pos , int n );
 };
 
 int Vector::size() {
@@ -77,6 +74,14 @@ int Vector:: front() {
 
 int Vector::back() {
     return (tamano > 0 ) ? at(tamano-1) : at(0);
+}
+
+void Vector::insert (int pos , int n ) {
+    Node *current = head ;
+    for (int i ; i< pos ; i++) { 
+        current = current -> next ; 
+    };
+    current-> val = n ;
 }
 
 
