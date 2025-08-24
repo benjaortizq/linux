@@ -10,12 +10,12 @@ class Node {
 };
 
 class Vector {          //para no hacer tanto despelote, class vector funciona igual que una dll , solo que se llama vector xd 
-    private : 
-    int  capacidad_max ;
+    ;
     public :
     Node* head; // Cabeza de la lista
     Node* tail; // Cola de la lista 
     int tamano ;
+    int  capacidad_max ;
     Vector() { //creador
         head = nullptr;
         tail = nullptr;
@@ -33,6 +33,12 @@ class Vector {          //para no hacer tanto despelote, class vector funciona i
     void resize(int n); //funcion para redimensionar la lista
     int at(int n); // devuelve elemento en N posicion
     int&  operator[]( int index) ;
+    int front(); //*done
+    int back(); //*done
+    void push_back(int n );//!hacer
+    int pop_back ();//!hacer
+
+
 
 
 };
@@ -63,6 +69,13 @@ int& Vector::operator[] (int index){ //llama al de arriba xd . quedaria chuzo ha
     return valor ; 
 }
 
+int Vector:: front() {
+    return at(0);
+}
+
+int Vector::back() {
+    return (tamano > 0 ) ? at(tamano-1) : at(0);
+}
 
 
 //!ALERT en cuenta que -> es como el :: pero en punteros 
