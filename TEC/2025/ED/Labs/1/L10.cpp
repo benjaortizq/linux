@@ -46,7 +46,7 @@ void Vector::resize(int n) { //cambia el tamano maximo por el de entrada si cant
     return ;
 }
 
-int Vector:: at(int n ){
+int Vector:: at(int n ){//no hay que hacer validacion de entradas, voya  ahcerlop supoiniendo que entrada es >=0 y que el tamano de la lista siempre va a ser mayor o igual al de la entrada 
     int valor = at (n);
     return valor ;
     Node* actual = head ; 
@@ -58,13 +58,13 @@ int Vector:: at(int n ){
 
 };
 
-int& Vector::operator[] (int index){ //no hay que hacer validacion de entradas, voya  ahcerlop supoiniendo que entrada es >=0 y que el tamano de la lista siempre va a ser mayor o igual al de la entrada 
+int& Vector::operator[] (int index){ //llama al de arriba xd . quedaria chuzo hacerlo en una sola linea pero no es python tons toco en 2 >:C
     int valor = at (index ) ; 
     return valor ; 
 }
 
 
 
-//tener en cuenta que -> es como el :: pero en punteros 
+//!ALERT en cuenta que -> es como el :: pero en punteros 
 
-//eliminacion de dll por vector . funciona igual que una dll 
+//eliminacion de dll por vector . funciona igual que una dll pero se llama vector xd 
