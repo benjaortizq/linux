@@ -53,9 +53,11 @@ void Vector::resize(int n) { //cambia el tamano maximo por el de entrada si cant
 }
 
 int Vector:: at(int n ){//no hay que hacer validacion de entradas, voya  ahcerlop supoiniendo que entrada es >=0 y que el tamano de la lista siempre va a ser mayor o igual al de la entrada 
-    int valor = at (n);
-    return valor ;
+    //!aqui ocurre un ostio que es que si la lista esta vacia, se queda mamando ya que head aputna a un nodo pero este nodo no existe . PONER UN IF NULLPOINTER  
     Node* actual = head ; 
+    if (tamano==0 ) {
+        return -1;
+    };
     for (int i=0; i< n; i++){
         actual= actual-> next;
     }
@@ -67,7 +69,7 @@ int Vector:: at(int n ){//no hay que hacer validacion de entradas, voya  ahcerlo
 int& Vector::operator[] (int index){ //llama al de arriba xd . quedaria chuzo hacerlo en una sola linea pero no es python tons toco en 2 >:C
     int valor = at (index ) ; 
     return valor ; 
-}
+} 
 
 int Vector:: front() {
     return at(0);
@@ -78,6 +80,10 @@ int Vector::back() {
 }
 
 
-//!ALERT en cuenta que -> es como el :: pero en punteros 
+
+
+//! en cuenta que -> es como el :: pero en punteros 
 
 //eliminacion de dll por vector . funciona igual que una dll pero se llama vector xd 
+
+
