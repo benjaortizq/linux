@@ -113,7 +113,8 @@ void Vector::insert (int pos , int n ) { //!este es un despiche . COMO ES INSERT
     tamano++; //lo sque para que viva una vida libre sin prejuiciso de los Ifs 
 }
 
-void Vector::erase(int pos) { //!este es un despiche , igual
+void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que insert pero al revez xdddd
+    Node* anterior = head ;
 
 }
 
