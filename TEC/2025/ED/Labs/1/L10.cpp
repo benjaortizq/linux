@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-//creacion de clase vector (con DLL )
 
 class Node {
     public : 
@@ -43,8 +42,10 @@ class Vector {          //para no hacer tanto despelote, class vector funciona i
 
 int Vector::size() {
         return tamano;}
+
 int Vector::max_size(){
         return capacidad_max;}
+
 void Vector::resize(int n) { //cambia el tamano maximo por el de entrada si cantidad de elementos del vector es menor o igual a entrada
     ((tamano >= n)? capacidad_max = n : 0 ); //cambia max por n si n mayor a size actual , sino no hace nada
     return ;
@@ -112,7 +113,6 @@ void Vector::insert (int pos , int n ) { //!este es un despiche . COMO ES INSERT
     nuevo->val = n ;
     tamano++ ;}
 }
-
 
 void Vector::erase(int pos) { //!este es un despiche , igual
 
