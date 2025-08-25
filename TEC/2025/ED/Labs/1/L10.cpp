@@ -96,7 +96,6 @@ void Vector::insert (int pos , int n ) { //!este es un despiche . COMO ES INSERT
         nuevo ->next = current ;
         current->prev = nuevo ;
         head = nuevo ;
-        tamano++;
     }
     else if (pos < tamano-1) {  //tamano >=2 
         Node * sig_curr = current ->next;
@@ -104,14 +103,14 @@ void Vector::insert (int pos , int n ) { //!este es un despiche . COMO ES INSERT
         nuevo ->prev = current;
         current ->next = nuevo ; 
         sig_curr ->prev = nuevo ; 
-        tamano++ ;
     }
     else {
     tail = nuevo ;  //si no es ninguna de las dos , se inserta al final siempre tons 
     current->next = nuevo ;
     nuevo->prev = current ;
     nuevo->val = n ;
-    tamano++ ;}
+    }
+    tamano++; //lo sque para que viva una vida libre sin prejuiciso de los Ifs 
 }
 
 void Vector::erase(int pos) { //!este es un despiche , igual
