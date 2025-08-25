@@ -80,13 +80,13 @@ int Vector::back() {
 void Vector::insert (int pos , int n ) { //!este es un despiche . COMO ES INSERTAR SIEMPRE SE VA A TENER QUE TENER UN NODO NUEVO Y TAMANO ++ 
     Node*nuevo=  new Node ; 
     nuevo->val= n ;
-    if (head== nullptr) {
+    if (head== nullptr) { //vacia 
         head=tail=nuevo;
         tamano++; //importantisimo
         return ;
     }
     Node *current = head ;
-    for (int i =0 ; i<pos  ; i++) {
+    for (int i =0 ; i<pos  ; i++) { //recorre hasta llegar a N -1 de ser el caso 
         if (current->next== nullptr) { 
             break;}
         current = current->next ;
@@ -96,22 +96,21 @@ void Vector::insert (int pos , int n ) { //!este es un despiche . COMO ES INSERT
         current->prev = nuevo ;
         head = nuevo ;
         tamano++;
-        return;
     }
-    if (pos < tamano) {  //tamano >=2 
+    else if (pos < tamano-1) {  //tamano >=2 
         Node * sig_curr = current ->next;
         nuevo->next= sig_curr ;
         nuevo ->prev = current;
         current ->next = nuevo ; 
         sig_curr ->prev = nuevo ; 
         tamano++ ;
-        return ;
     }
+    else {
     tail = nuevo ;  //si no es ninguna de las dos , se inserta al final siempre tons 
     current->next = nuevo ;
     nuevo->prev = current ;
     nuevo->val = n ;
-    tamano++ ;
+    tamano++ ;}
 }
 
 
