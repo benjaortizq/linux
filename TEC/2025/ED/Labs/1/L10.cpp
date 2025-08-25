@@ -38,6 +38,7 @@ class Vector {          //para no hacer tanto despelote, class vector funciona i
     void push_back(int n );//!hacer
     int pop_back ();//!hacer
     void insert (int pos , int n );
+    void erase(int pos);
 };
 
 int Vector::size() {
@@ -76,18 +77,50 @@ int Vector::back() {
     return (tamano > 0 ) ? at(tamano-1) : at(0);
 }
 
-void Vector::insert (int pos , int n ) {
+void Vector::insert (int pos , int n ) { //!este es un despiche . COMO ES INSERTAR SIEMPRE SE VA A TENER QUE TENER UN NODO NUEVO Y TAMANO ++ 
+    Node*nuevo=  new Node ; 
+    nuevo->val= n ;
+    if (head== nullptr) {
+        head=tail=nuevo;
+        tamano++; //importantisimo
+        return ;
+    }
     Node *current = head ;
-    for (int i ; i< pos ; i++) { 
-        current = current -> next ; 
-    };
-    current-> val = n ;
+    for (int i =0 ; i<pos  ; i++) {
+        if (current->next== nullptr) { 
+            break;}
+        current = current->next ;
+    }
+    if (pos ==0 ){  //tamano >=1 
+        nuevo ->next = current ;
+        current->prev = nuevo ;
+        head = nuevo ;
+        tamano++;
+        return;
+    }
+    if (pos < tamano) {  //tamano >=2 
+        Node * sig_curr = current ->next;
+        nuevo->next= sig_curr ;
+        nuevo ->prev = current;
+        current ->next = nuevo ; 
+        sig_curr ->prev = nuevo ; 
+        tamano++ ;
+        return ;
+    }
+    tail = nuevo ;  //si no es ninguna de las dos , se inserta al final siempre tons 
+    current->next = nuevo ;
+    nuevo->prev = current ;
+    nuevo->val = n ;
+    tamano++ ;
 }
 
 
+void Vector::erase(int pos) { //!este es un despiche , igual
+
+}
 
 
-//! en cuenta que -> es como el :: pero en punteros 
+//! tener en cuenta que en c++  -> es como el :: pero en punteros o el .attribute de python (aunque py se hace un despiche con att y method )
 
 //eliminacion de dll por vector . funciona igual que una dll pero se llama vector xd 
 
