@@ -113,11 +113,20 @@ void Vector::insert (int pos , int n ) { //!este es un despiche . COMO ES INSERT
     tamano++; //lo sque para que viva una vida libre sin prejuiciso de los Ifs 
 }
 
+void Vector::push_back (int n ){ 
+    insert (tamano, n ); //inserta al final de la lista 
+}
+
 void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que insert pero al revez xdddd
     Node* anterior = head ;
 
 }
 
+
+/*!keys
+
+
+*/
 
 //! tener en cuenta que en c++  -> es como el :: pero en punteros o el .attribute de python (aunque py se hace un despiche con att y method )
 
