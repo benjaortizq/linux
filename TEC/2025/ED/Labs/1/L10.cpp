@@ -121,26 +121,18 @@ void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que inser
     if (head == nullptr){
         return ;
     }
-
-    //!casos limite ; lista de 1 elemento y borrar 0 ; borrar 0 pero no , elemento final , elemento del medio 
-    //*borrar 0 se puede agrupar para hacerlo mas corto
-    //*aunque en una se tiene que dejar a head y a tail apuntando a nullptr .
-    //*en la otra , head se mueve al siguiente del que se quiere elminar , tail nunca se toca 
     Node* actual = head ; //el tamano es siempre 1 . aqui es el node al cual apunta head
-    if (tamano==1 ) { //siempre que se llame a eliminar en tamano 1 , va a ocurrir este caso 
-        head= nullptr ;
-        tail = nullptr;
+    if (tamano==1 ) { 
+        head= tail = nullptr;
         delete (actual) ; 
         tamano --; 
         return ;
     }
-    //segundo caso , eliminar cola 
     if (pos >= tamano-1){ //se quiere eliminar el ultimo 
         actual = tail ;  //actual se vuelve el ultimo, el que tail esta apuntando 
         Node *anterior = actual->prev; //asigno un a referencia a un nodo , siendo el anterior del actual . 
         tail = anterior; // tail  queda apuntando al anterior del que quiero eliminar , asi no pierdo mi referencia de lista 
-        actual ->prev = nullptr;//se desconecta actual de la lista 
-        anterior ->next= nullptr ; //se desconecta lista de actual 
+        actual ->prev =anterior ->next= nullptr;//se desconecta actual de la lista 
         delete actual; //elimina actual 
         tamano -- ; //tamano se reduce 
         return ;//termina 
@@ -155,8 +147,16 @@ void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que inser
         return ; 
     }
     for (int i ; i < pos ; i++ ) {
-        actual = actual ->next; //recorro la lista;  ∀ lista  , (tamano >=3 )
-    };
+        actual = actual ->next; //recorro la lista; lista  , (tamano >=3 )
+    };//quede apuntando como actual al nodo que quiero eliminar 
+    Node* siguiente = actual -> next; //apunto al siguiente del que quiero eliminjar, esto son siempre medios 
+    Node*anterior = actual ->prev;
+    anterior->next = siguiente;
+    siguiente->prev = anterior;
+    actual->next = actual ->prev = nullptr ;
+    delete actual; 
+    tamano --;
+    return ;
 
 }
 
