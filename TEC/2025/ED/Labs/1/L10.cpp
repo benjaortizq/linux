@@ -126,17 +126,40 @@ void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que inser
     //*borrar 0 se puede agrupar para hacerlo mas corto
     //*aunque en una se tiene que dejar a head y a tail apuntando a nullptr .
     //*en la otra , head se mueve al siguiente del que se quiere elminar , tail nunca se toca 
-    Node* anterior = head ; //el tamano es siempre 1 . aqui es el node al cual apunta head
-    if (tamano==1 && pos == 0 ) { //est
+    Node* actual = head ; //el tamano es siempre 1 . aqui es el node al cual apunta head
+    if (tamano==1 ) { //siempre que se llame a eliminar en tamano 1 , va a ocurrir este caso 
         head= nullptr ;
         tail = nullptr;
-        delete (anterior) ; 
+        delete (actual) ; 
         tamano --; 
         return ;
     }
-    
+    //segundo caso , eliminar cola 
+    if (pos >= tamano-1){ //se quiere eliminar el ultimo 
+        actual = tail ;  //actual se vuelve el ultimo, el que tail esta apuntando 
+        Node *anterior = actual->prev; //asigno un a referencia a un nodo , siendo el anterior del actual . 
+        tail = anterior; // tail  queda apuntando al anterior del que quiero eliminar , asi no pierdo mi referencia de lista 
+        actual ->prev = nullptr;//se desconecta actual de la lista 
+        anterior ->next= nullptr ; //se desconecta lista de actual 
+        delete actual; //elimina actual 
+        tamano -- ; //tamano se reduce 
+        return ;//termina 
+    }
+    else if (pos == 0 ) { 
+        //actual ya es head 
+        Node* siguiente = actual -> next; 
+        head = siguiente; 
+        siguiente -> prev = actual ->next = nullptr ; //!esto no estoy seguro si explota todo , ojala no , igual se ve cool (como si en realidad fuese bueno programando Bp )
+        delete actual ;
+        tamano --;
+        return ; 
+    }
+    for (int i ; i < pos ; i++ ) {
+        actual = actual ->next; //recorro la lista;  ∀ lista  , (tamano >=3 )
+    };
 
 }
+
 
 
 /*!keys
