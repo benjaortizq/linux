@@ -118,7 +118,23 @@ void Vector::push_back (int n ){
 }
 
 void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que insert pero al revez xdddd
-    Node* anterior = head ;
+    if (head == nullptr){
+        return ;
+    }
+
+    //!casos limite ; lista de 1 elemento y borrar 0 ; borrar 0 pero no , elemento final , elemento del medio 
+    //*borrar 0 se puede agrupar para hacerlo mas corto
+    //*aunque en una se tiene que dejar a head y a tail apuntando a nullptr .
+    //*en la otra , head se mueve al siguiente del que se quiere elminar , tail nunca se toca 
+    Node* anterior = head ; //el tamano es siempre 1 . aqui es el node al cual apunta head
+    if (tamano==1 && pos == 0 ) { //est
+        head= nullptr ;
+        tail = nullptr;
+        delete (anterior) ; 
+        tamano --; 
+        return ;
+    }
+    
 
 }
 
