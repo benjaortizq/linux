@@ -35,7 +35,7 @@ class Vector {          //para no hacer tanto despelote, class vector funciona i
     int front(); //*done
     int back(); //*done
     void push_back(int n );//!hacer
-    int pop_back ();//!hacer
+    int pop_back ();
     void insert (int pos , int n );
     void erase(int pos);
 };
@@ -113,7 +113,7 @@ void Vector::insert (int pos , int n ) { //!este es un despiche . COMO ES INSERT
     tamano++; //lo sque para que viva una vida libre sin prejuiciso de los Ifs 
 }
 
-void Vector::push_back (int n ){ 
+void Vector::push_back (int n ){  //se puede hacer mas divertido sin usar insert  
     insert (tamano, n ); //inserta al final de la lista 
 }
 
@@ -159,6 +159,7 @@ void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que inser
     return ;
 
 }
+
 
 
 
