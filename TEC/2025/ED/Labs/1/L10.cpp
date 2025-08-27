@@ -38,6 +38,7 @@ class Vector {          //para no hacer tanto despelote, class vector funciona i
     int pop_back ();
     void insert (int pos , int n );
     void erase(int pos);
+    void swap(int n , int m);
 };
 
 int Vector::size() {
@@ -53,10 +54,10 @@ void Vector::resize(int n) { //cambia el tamano maximo por el de entrada si cant
 
 int Vector:: at(int n ){//no hay que hacer validacion de entradas, voya  ahcerlop supoiniendo que entrada es >=0 y que el tamano de la lista siempre va a ser mayor o igual al de la entrada 
     //!aqui ocurre un ostio que es que si la lista esta vacia, se queda mamando ya que head aputna a un nodo pero este nodo no existe . PONER UN IF NULLPOINTER  
-    Node* actual = head ; 
     if (tamano==0 ) {
         return -1;
     };
+    Node* actual = head ; 
     for (int i=0; i< n; i++){
         actual= actual-> next;
     }
@@ -70,7 +71,7 @@ int& Vector::operator[] (int index){ //llama al de arriba xd . quedaria chuzo ha
     return valor ; 
 } 
 
-int Vector:: front() {
+int Vector:: front() { //poco sucio pero se pude hcer mas eficiente creo
     return at(0);
 }
 
@@ -160,7 +161,25 @@ void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que inser
 
 }
 
-
+void Vector::swap(int m, int n){ //* recorrer hasta max n o m .   
+    Node* act = head ; //primer elemento de la lista 
+    int val_m ;
+    int val_n;
+    for (int i  =0; i < tamano; i++) {
+        if (i==m) { //!ojo aqui, se puede hacer un toque que si va existe intm, se cambia y viceversa, asi no se recorre 2 veces la lsita 
+            val_m = act->val;
+            if (i>= n) { //!ya paso por N  , val n ya es algo , no sirve si 
+                act->val = val_n; //des
+            } 
+        };
+        if (i==n) { //!ojo aqui, se puede hacer un toque que si va existe intm, se cambia y viceversa, asi no se recorre 2 veces la lsita 
+            val_n = act->val;
+            if (i>= m) { //!ya paso por N  , val n ya es algo
+                act->val = val_m
+            } 
+        }
+    }
+}
 
 
 /*!keys
@@ -173,3 +192,4 @@ void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que inser
 //eliminacion de dll por vector . funciona igual que una dll pero se llama vector xd 
 
 
+//!todo : 
