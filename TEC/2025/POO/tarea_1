@@ -1,1 +1,20 @@
 // me cago en netbeans 
+public class Lapiz{
+    //att 
+    string color;
+    string marca  ; 
+    string tipo;
+    //meth 
+    void (escribir){
+        //code
+    }
+    void borrar(){
+
+    }
+    //consructor
+    public Lapiz() ;
+        public Lapiz(stringolor, string marca) {
+            
+        }
+
+}
