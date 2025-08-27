@@ -157,7 +157,7 @@ void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que inser
     actual->next = actual ->prev = nullptr ;
     delete actual; 
     tamano --;
-    return ;
+    return ;  //return mi amada 
 
 }
 
@@ -175,7 +175,8 @@ void Vector::swap(int m, int n){ //* recorrer hasta max n o m .
         if (i==n) { //!ojo aqui, se puede hacer un toque que si va existe intm, se cambia y viceversa, asi no se recorre 2 veces la lsita 
             val_n = act->val;
             if (i>= m) { //!ya paso por N  , val n ya es algo
-                act->val = val_m
+                act->val = val_m;
+
             } 
         }
     }
