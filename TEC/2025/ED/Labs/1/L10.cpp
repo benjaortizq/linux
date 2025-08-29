@@ -161,26 +161,43 @@ void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que inser
 
 }
 
-void Vector::swap(int m, int n){ //* recorrer hasta max n o m .   
-    Node* act = head ; //primer elemento de la lista 
-    int val_m ;
-    int val_n;
-    for (int i  =0; i < tamano; i++) {
-        if (i==m) { //!ojo aqui, se puede hacer un toque que si va existe intm, se cambia y viceversa, asi no se recorre 2 veces la lsita 
-            val_m = act->val;
-            if (i>= n) { //!ya paso por N  , val n ya es algo , no sirve si 
-                act->val = val_n; //des
-            } 
-        };
-        if (i==n) { //!ojo aqui, se puede hacer un toque que si va existe intm, se cambia y viceversa, asi no se recorre 2 veces la lsita 
-            val_n = act->val;
-            if (i>= m) { //!ya paso por N  , val n ya es algo
-                act->val = val_m;
-
-            } 
+void Vector::swap(int m, int n){
+    if (m==n) return ; //validacion de weas ; ya es costumbre sorry 
+    if(m>n) {//m<n 
+        int tmp = m ; 
+        m=n ;
+        n = tmp ;
+    }
+    Node* nodo_m ;
+    Node* nodo_n ;
+    if (m<=tamano / 2 ) { //buscador de N 
+        nodo_m = head ;
+        for (int i =0 ; i<m ; i++) {
+            nodo_m = nodo_m->next;
+        }; 
+    }
+    else {
+        nodo_m = tail ;
+        for (int i = tamano ; i>m ; i--) {
+            nodo_m=nodo_m->prev;
         }
     }
+    if (n <= tamano / 2) {
+        nodo_n = head;
+        for (int i = 0; i < n; i++) {
+            nodo_n = nodo_n->next;
+        }
+    } else {
+        nodo_n = tail;
+        for (int i = tamano - 1; i > n; i--) {
+            nodo_n = nodo_n->prev;
+        }
+    }
+    nodo_m->val = nodo_m->val ^ nodo_n->val;
+    nodo_n->val = nodo_m->val ^ nodo_n->val;
+    nodo_m->val = nodo_m->val ^ nodo_n->val;
 }
+
 
 
 /*!keys
