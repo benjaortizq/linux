@@ -161,7 +161,7 @@ void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que inser
 
 }
 
-void Vector::swap(int m, int n){
+void Vector::swap(int m, int n){ //creacion de 2 punteros , se amtneiene una relacion de mayor menor entre los dos . la relacion es estatica . se revisa por cual inciar , si head o tail . 
     if (m==n) return ; //validacion de weas ; ya es costumbre sorry 
     if(m>n) {//m<n 
         int tmp = m ; 
@@ -200,14 +200,18 @@ void Vector::swap(int m, int n){
 
 
 
+int main () { 
+    
+}
+
 /*!keys
 
 
 */
 
 //! tener en cuenta que en c++  -> es como el :: pero en punteros o el .attribute de python (aunque py se hace un despiche con att y method )
-
+ 
 //eliminacion de dll por vector . funciona igual que una dll pero se llama vector xd 
 
 
-//!todo : 
+//!todo : : modificar los delete e insert de inicio y final ; funciones unicas ya que esos son con head y tail ltierlamente 
