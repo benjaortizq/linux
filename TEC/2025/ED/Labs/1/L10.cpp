@@ -72,7 +72,7 @@ int& Vector::operator[] (int index){ //llama al de arriba xd . quedaria chuzo ha
 } 
 
 int Vector:: front() { //poco sucio pero se pude hcer mas eficiente creo
-    return at(0);
+    return at (0) ;
 }
 
 int Vector::back() {
@@ -198,10 +198,22 @@ void Vector::swap(int m, int n){ //creacion de 2 punteros , se amtneiene una rel
     nodo_m->val = nodo_m->val ^ nodo_n->val;
 }
 
+//!crear un manejador de instruccciones tipo automata ? trie maybe ? 
+
 
 
 int main () { 
+    int n , q ; 
+    cin >> n >> q ; 
+    Vector arreglo_vect [n] ; 
     
+    
+
+
+
+    
+
+
 }
 
 /*!keys
