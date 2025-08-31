@@ -139,6 +139,7 @@ int Vector::pop_back() {
     nodo->prev = nullptr ;
     tamano-- ; 
     delete nodo; 
+    return valor ;
 }
 
 void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que insert pero al revez xdddd
