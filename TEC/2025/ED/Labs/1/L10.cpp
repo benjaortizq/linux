@@ -83,7 +83,7 @@ int Vector::back() {
 void Vector::insert (int pos , int n ) { //!este es un despiche . COMO ES INSERTAR SIEMPRE SE VA A TENER QUE TENER UN NODO NUEVO Y TAMANO ++ 
     Node*nuevo=  new Node ; 
     nuevo->val= n ;
-    if (head== nullptr) { //vacia 
+    if (head== nullptr) { //vacia ,head solo apunta a nada cuando tamano = 0 , como tamano no puede ser 0 tons ta bien 
         head=tail=nuevo;
         tamano++; //importantisimo
         return ;
