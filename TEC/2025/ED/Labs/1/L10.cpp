@@ -121,6 +121,7 @@ void Vector::push_back (int n ){  //se puede hacer mas divertido sin usar insert
 
 void Vector::print() { 
     if (head == nullptr) {
+        cout <<endl;
         return ;
     } //tamano 0 muerto
     Node* actual= head  ; 
@@ -253,13 +254,37 @@ void inicar_vect(string linea, Vector arreglo_vect[], int n) {
 
 
 void procesar_comando(string ins , Vector arr_vect [] , int n  ) {
-    if (ins== "print") { 
-        for (int i = 0 ; i< n ; i++) {  // este recorre el arreglo de vectores 
-            arr_vect[i].print() ;
+    string tokens[5] ; //5 palabras maximo pormlinea , veo que es que
+    string act ;
+    int count =0 ;
+    for (int i = 0; i <= ins.length(); i++) {
+        if (i == ins.length() || ins[i] == ' ') {
+            if (!act.empty()) {
+                tokens[count++] = act;
+                act = "";
+        }
+    } else {
+        act += act[i];
         }
     }
-    
-
+    if (count == 1 && tokens[0]== "print") { 
+        for (int i =0 ; i< n ; i ++) {
+            arr_vect[i].print();
+        }
+        return ; 
+    }
+    int ind ; 
+    ind= stoi(tokens[0]);
+    if (count == 2) {  //!verificar bien aca , que hay unos que no retoirnan nada 
+        if (tokens[1]== "zs") { cout<<arr_vect[ind].size() ;return; } //int 
+        if (tokens[1]== "mzs") { cout<<arr_vect[ind].max_size() ;return; } //int 
+        if (tokens[1]== "ft") { cout<<arr_vect[ind].front() ;return; } //int
+        if (tokens[1]== "bk") { cout<<arr_vect[ind].back() ;return; }//int 
+        if (tokens[1]== "pbk") { cout<<arr_vect[ind].pop_back() ;return; }//int 
+    }
+    if (count == 3 ) { 
+        
+    }
 }
 
 int main () { 
