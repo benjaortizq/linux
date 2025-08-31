@@ -39,6 +39,7 @@ class Vector {          //para no hacer tanto despelote, class vector funciona i
     void insert (int pos , int n );
     void erase(int pos);
     void swap(int n , int m);
+    void print();
 };
 
 int Vector::size() {
@@ -116,6 +117,26 @@ void Vector::insert (int pos , int n ) { //!este es un despiche . COMO ES INSERT
 
 void Vector::push_back (int n ){  //se puede hacer mas divertido sin usar insert  
     insert (tamano, n ); //inserta al final de la lista 
+}
+
+void Vector::print() { 
+    if (head == nullptr) {
+        return ;
+    } //tamano 0 muerto
+    Node* actual= head  ; 
+    for (int i = 0 ; i < tamano ; i++ ) { 
+        cout <<actual->val << " "; 
+    }
+    cout <<endl; 
+}
+
+int Vector::pop_back() {
+    Node* nodo = tail ; //tail siempre tiene algo como tal 
+    int valor= nodo->val ;
+    tail = nodo->prev ; 
+    nodo->prev = nullptr ;
+    tamano-- ; 
+    delete nodo; 
 }
 
 void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que insert pero al revez xdddd
@@ -200,12 +221,63 @@ void Vector::swap(int m, int n){ //creacion de 2 punteros , se amtneiene una rel
 
 //!crear un manejador de instruccciones tipo automata ? trie maybe ? 
 
+void inicar_vect(string linea, Vector arreglo_vect[], int n) {
+    int pos = 0;
+    string numActual = "";
+    int indiceVector = 0;
+    
+    while (pos <= linea.length() && indiceVector < n) {
+        // Si encontramos espacio o final de línea
+        if (pos == linea.length() || linea[pos] == ' ') {
+            if (!numActual.empty()) {
+                int capacidad = stoi(numActual);
+                if (capacidad != -1) {
+                    // Crear vector con capacidad especifica
+                    arreglo_vect[indiceVector] = Vector(capacidad);
+                }
+                // Si es -1 el constructor por defecto ya usa el int amx
+                indiceVector++;
+                numActual = "";
+            }
+        } else {
+            numActual += linea[pos];
+        }
+        pos++;
+    }
+    
+   
+}
+//funcion para wea de input . a hacer un chorro de ifs mae 
 
+
+
+void procesar_comando(string ins , Vector arr_vect [] , int n  ) {
+    if (ins== "print") { 
+        for (int i = 0 ; i< n ; i++) {  // este recorre el arreglo de vectores 
+            arr_vect[i].print() ;
+        }
+    }
+
+}
 
 int main () { 
     int n , q ; 
     cin >> n >> q ; 
-    Vector arreglo_vect [n] ; 
+    Vector arreglo_vect [n] ; //arerglo de vectores
+    string arr_ins [q] ; //arreglo de instruscfiones, vacio actualmente
+    string linea ;
+    cin >> linea ; 
+    inicar_vect (linea , arreglo_vect,n );
+    for (int i = 0 ; i<q ; i++){ 
+        getline  (cin , linea) ; //lo de4 cin se va a linea 
+        arr_ins [i] = linea ;
+    }
+    for (string ins : arr_ins) { 
+        procesar_comando (ins , arreglo_vect, n );
+    }
+    
+
+
     
     
 
