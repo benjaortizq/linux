@@ -253,7 +253,7 @@ void inicar_vect(string linea, Vector arreglo_vect[], int n) {
 
 
 
-void procesar_comando(string ins , Vector arr_vect [] , int n  ) {
+void procesar_comando(string ins , Vector arr_vect [] , int n  ) { //!ME OCUPO DESHACER DE [] PARA YA QUE SINO CRASHEA TODO
     string tokens[5] ; //5 palabras maximo pormlinea , veo que es que
     string act ;
     int count =0 ;
@@ -282,9 +282,20 @@ void procesar_comando(string ins , Vector arr_vect [] , int n  ) {
         if (tokens[1]== "bk") { cout<<arr_vect[ind].back() ;return; }//int 
         if (tokens[1]== "pbk") { cout<<arr_vect[ind].pop_back() ;return; }//int 
     }
+    int a ;
+    a = stoi(tokens[2]);
     if (count == 3 ) { 
-
+        if (tokens[1]== "rzs") { arr_vect[ind].resize(a) ;return; } //void
+        if (tokens[1]== "at") { cout<<arr_vect[ind].at(a) ;return; } //int
+        if (tokens[1]== "pb") { arr_vect[ind].push_back(a) ;return; } //void
+        if (tokens[1]== "es") { arr_vect[ind].erase(a) ;return; } //void
     }
+    int b ; 
+    b= stoi(tokens[3]) ; 
+    if (tokens[1]== "in") { arr_vect[ind].insert(a,b) ;return; } //void
+    if (tokens[1]== "swp") { arr_vect[ind].swap(a,b) ;return; } //int
+
+
 }
 
 int main () { 
