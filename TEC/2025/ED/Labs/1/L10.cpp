@@ -49,7 +49,7 @@ int Vector::max_size(){
         return capacidad_max;}
 
 void Vector::resize(int n) { //cambia el tamano maximo por el de entrada si cantidad de elementos del vector es menor o igual a entrada
-    ((tamano >= n)? capacidad_max = n : 0 ); //cambia max por n si n mayor a size actual , sino no hace nada
+    if (tamano <= n) capacidad_max = n; //cambia max por n si n mayor a size actual , sino no hace nada
     return ;
 }
 
@@ -67,10 +67,10 @@ int Vector:: at(int n ){//no hay que hacer validacion de entradas, voya  ahcerlo
 
 };
 
-int& Vector::operator[] (int index){ //llama al de arriba xd . quedaria chuzo hacerlo en una sola linea pero no es python tons toco en 2 >:C
-    int valor = at (index ) ; 
-    return valor ; 
-} 
+int& Vector::operator[] (int index){ //devuelve referencia al valor en el nodo en la posición index
+    Node* actual = head;
+    for (int i = 0; i < index; i++) actual = actual->next;
+    return actual->val; }
 
 int Vector:: front() { //poco sucio pero se pude hcer mas eficiente creo
     return at (0) ;
@@ -133,13 +133,10 @@ void Vector::print() {
 }
 
 int Vector::pop_back() {
-    Node* nodo = tail ; //tail siempre tiene algo como tal 
-    int valor= nodo->val ;
-    tail = nodo->prev ; 
-    nodo->prev = nullptr ;
-    tamano-- ; 
-    delete nodo; 
-    return valor ;
+    if (tail == nullptr) return -1;
+    int valor = tail->val;
+    erase(tamano - 1);
+    return valor;
 }
 
 void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que insert pero al revez xdddd
@@ -171,7 +168,7 @@ void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que inser
         tamano --;
         return ; 
     }
-    for (int i ; i < pos ; i++ ) {
+    for (int i =0 ; i < pos ; i++ ) {
         actual = actual ->next; //recorro la lista; lista  , (tamano >=3 )
     };//quede apuntando como actual al nodo que quiero eliminar 
     Node* siguiente = actual -> next; //apunto al siguiente del que quiero eliminjar, esto son siempre medios 
@@ -265,7 +262,7 @@ void procesar_comando(string ins , Vector arr_vect [] , int n  ) { //!ME OCUPO D
                 act = "";
         }
     } else {
-        act += act[i];
+        act += ins[i];
         }
     }
     if (count == 1 && tokens[0]== "print") { 
@@ -305,7 +302,8 @@ int main () {
     Vector arreglo_vect [n] ; //arerglo de vectores
     string arr_ins [q] ; //arreglo de instruscfiones, vacio actualmente
     string linea ;
-    cin >> linea ; 
+    cin.ignore();
+    getline(cin, linea);
     inicar_vect (linea , arreglo_vect,n );
     for (int i = 0 ; i<q ; i++){ 
         getline  (cin , linea) ; //lo de4 cin se va a linea 
