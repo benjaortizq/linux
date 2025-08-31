@@ -126,6 +126,7 @@ void Vector::print() {
     Node* actual= head  ; 
     for (int i = 0 ; i < tamano ; i++ ) { 
         cout <<actual->val << " "; 
+        actual = actual->next;
     }
     cout <<endl; 
 }
@@ -257,6 +258,7 @@ void procesar_comando(string ins , Vector arr_vect [] , int n  ) {
             arr_vect[i].print() ;
         }
     }
+    
 
 }
 
