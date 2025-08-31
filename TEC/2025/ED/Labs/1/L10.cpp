@@ -283,7 +283,7 @@ void procesar_comando(string ins , Vector arr_vect [] , int n  ) {
         if (tokens[1]== "pbk") { cout<<arr_vect[ind].pop_back() ;return; }//int 
     }
     if (count == 3 ) { 
-        
+
     }
 }
 
@@ -302,17 +302,6 @@ int main () {
     for (string ins : arr_ins) { 
         procesar_comando (ins , arreglo_vect, n );
     }
-    
-
-
-    
-    
-
-
-
-    
-
-
 }
 
 /*!keys
