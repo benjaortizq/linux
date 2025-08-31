@@ -68,9 +68,8 @@ int Vector:: at(int n ){//no hay que hacer validacion de entradas, voya  ahcerlo
 };
 
 int& Vector::operator[] (int index){ //devuelve referencia al valor en el nodo en la posición index
-    Node* actual = head;
-    for (int i = 0; i < index; i++) actual = actual->next;
-    return actual->val; }
+    int val = at(index) ; 
+    return val;}
 
 int Vector:: front() { //poco sucio pero se pude hcer mas eficiente creo
     return at (0) ;
@@ -135,10 +134,16 @@ void Vector::print() {
 }
 
 int Vector::pop_back() {
-    if (tail == nullptr) return -1;
-    int valor = tail->val;
-    erase(tamano - 1);
-    return valor;
+    Node* final = tail;
+    int val = final->val; 
+    if (head == tail) { // Solo hay un elemento
+        head = tail = nullptr;
+    } else {
+        tail = final->prev;
+    }
+    delete final;
+    tamano--; // Actualizar el tamaño
+    return val;
 }
 
 void Vector::erase(int pos) { //!este es un despiche , igual Misma wea que insert pero al revez xdddd
