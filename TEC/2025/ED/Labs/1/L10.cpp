@@ -274,17 +274,17 @@ void procesar_comando(string ins , Vector arr_vect [] , int n  ) { //!ME OCUPO D
     int ind ; 
     ind= stoi(tokens[0]);
     if (count == 2) {  //!verificar bien aca , que hay unos que no retoirnan nada 
-        if (tokens[1]== "zs") { cout<<arr_vect[ind].size() ;return; } //int 
-        if (tokens[1]== "mzs") { cout<<arr_vect[ind].max_size() ;return; } //int 
-        if (tokens[1]== "ft") { cout<<arr_vect[ind].front() ;return; } //int
-        if (tokens[1]== "bk") { cout<<arr_vect[ind].back() ;return; }//int 
-        if (tokens[1]== "pbk") { cout<<arr_vect[ind].pop_back() ;return; }//int 
+        if (tokens[1]== "sz") { cout<<arr_vect[ind].size() <<endl ;return; } //int 
+        if (tokens[1]== "msz") { cout<<arr_vect[ind].max_size()<<endl ;return; } //int 
+        if (tokens[1]== "ft") { cout<<arr_vect[ind].front()<<endl ;return; } //int
+        if (tokens[1]== "bk") { cout<<arr_vect[ind].back() <<endl;return; }//int 
+        if (tokens[1]== "pbk") { cout<<arr_vect[ind].pop_back()<<endl ;return; }//int 
     }
     int a ;
     a = stoi(tokens[2]);
     if (count == 3 ) { 
         if (tokens[1]== "rzs") { arr_vect[ind].resize(a) ;return; } //void
-        if (tokens[1]== "at") { cout<<arr_vect[ind].at(a) ;return; } //int
+        if (tokens[1]== "at") { cout<<arr_vect[ind].at(a)<<endl ;return; } //int
         if (tokens[1]== "pb") { arr_vect[ind].push_back(a) ;return; } //void
         if (tokens[1]== "es") { arr_vect[ind].erase(a) ;return; } //void
     }
