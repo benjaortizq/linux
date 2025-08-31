@@ -89,30 +89,32 @@ void Vector::insert (int pos , int n ) { //!este es un despiche . COMO ES INSERT
         return ;
     }
     Node *current = head ;
-    for (int i =0 ; i<pos  ; i++) { //recorre hasta llegar a N -1 de ser el caso 
-        if (current->next== nullptr) { 
-            break;}
-        current = current->next ;
+    if (tamano < capacidad_max ) {//si es menor si puedo 
+        for (int i =0 ; i<pos  ; i++) { //recorre hasta llegar a N -1 de ser el caso 
+            if (current->next== nullptr) { 
+                break;}
+            current = current->next ;
+        }
+        if (pos ==0 ){  //tamano >=1 
+            nuevo ->next = current ;
+            current->prev = nuevo ;
+            head = nuevo ;
+        }
+        else if (pos < tamano-1) {  //tamano >=2 
+            Node * sig_curr = current ->next;
+            nuevo->next= sig_curr ;
+            nuevo ->prev = current;
+            current ->next = nuevo ; 
+            sig_curr ->prev = nuevo ; 
+        }
+        else {
+        tail = nuevo ;  //si no es ninguna de las dos , se inserta al final siempre tons 
+        current->next = nuevo ;
+        nuevo->prev = current ;
+        nuevo->val = n ;
+        }
+        tamano++; //lo sque para que viva una vida libre sin prejuiciso de los Ifs 
     }
-    if (pos ==0 ){  //tamano >=1 
-        nuevo ->next = current ;
-        current->prev = nuevo ;
-        head = nuevo ;
-    }
-    else if (pos < tamano-1) {  //tamano >=2 
-        Node * sig_curr = current ->next;
-        nuevo->next= sig_curr ;
-        nuevo ->prev = current;
-        current ->next = nuevo ; 
-        sig_curr ->prev = nuevo ; 
-    }
-    else {
-    tail = nuevo ;  //si no es ninguna de las dos , se inserta al final siempre tons 
-    current->next = nuevo ;
-    nuevo->prev = current ;
-    nuevo->val = n ;
-    }
-    tamano++; //lo sque para que viva una vida libre sin prejuiciso de los Ifs 
 }
 
 void Vector::push_back (int n ){  //se puede hacer mas divertido sin usar insert  
@@ -323,5 +325,5 @@ int main () {
  
 //eliminacion de dll por vector . funciona igual que una dll pero se llama vector xd 
 
-
+//!error importante . Al hacer push back , hay que verificar si el tamano ya es el maximo , que sino entro en errores pe casusa 
 //!todo : : modificar los delete e insert de inicio y final ; funciones unicas ya que esos son con head y tail ltierlamente 
