@@ -254,7 +254,6 @@ void inicar_vect(string linea, Vector arreglo_vect[], int n) {
     
    
 }
-//funcion para wea de input . a hacer un chorro de ifs mae 
 
 
 
