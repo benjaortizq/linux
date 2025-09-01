@@ -232,10 +232,9 @@ void inicar_vect(string linea, Vector arreglo_vect[], int n) {
     int pos = 0;
     string numActual = "";
     int indiceVector = 0;
-    
-    while (pos <= linea.length() && indiceVector < n) {
-        // Si encontramos espacio o final de línea
-        if (pos == linea.length() || linea[pos] == ' ') {
+    int tamano_lin = linea.length();
+    while (pos <= tamano_lin && indiceVector < n) {
+        if (pos == tamano_lin || linea[pos] == ' ') {
             if (!numActual.empty()) {
                 int capacidad = stoi(numActual);
                 if (capacidad != -1) {
