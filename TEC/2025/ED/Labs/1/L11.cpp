@@ -56,5 +56,5 @@ void SLL::insertar (string nombre , int prio ) { //!o(n)
     act ->next = ins;
     size++;
     return ;
-
+}
 
