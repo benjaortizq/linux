@@ -17,7 +17,7 @@ class SLL{
     void add ( string nombre, int prio) ;
     string pop ();
     SLL(){
-        head== nullptr ;
+        head= nullptr ;
     }
 };
 
@@ -54,7 +54,10 @@ void SLL::add (string nombre , int prio ) { //!o(n)
     return ;
 }
 
-string SLL::pop() {  
+string SLL::pop() {  //!O(1)
+    if (head== nullptr ) { 
+        return " ";
+    }
     Node*act= head ; 
     string tmp ;
     //tamano 1 
