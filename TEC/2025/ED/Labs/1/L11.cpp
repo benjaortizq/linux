@@ -56,7 +56,7 @@ void SLL::add (string nombre , int prio ) { //!o(n)
 
 string SLL::pop() {  //!O(1)
     if (head== nullptr ) { 
-        return " ";
+        return "";
     }
     Node*act= head ; 
     string tmp ;
