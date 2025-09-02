@@ -14,10 +14,11 @@ class Node  {
 class SLL{
     public :
     Node* head ;
-
     void add ( string nombre, int prio) ;
     string pop ();
-
+    SLL(){
+        head== nullptr ;
+    }
 };
 
 void SLL::add (string nombre , int prio ) { //!o(n)
