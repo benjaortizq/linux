@@ -71,3 +71,6 @@ string SLL::pop() {  //!O(1)
     delete act;
     return tmp;
 }
+
+//aqui vienen los lectores de entrada 
+//lee desde 0 hasta N , si encuentra espacio ese es el primer  tokenm hasta antes del espacio . se vuelve name . lo que sigue se hace un recorrido hstata el leng . se hace stoi y sigue . 
