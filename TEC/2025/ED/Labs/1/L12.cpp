@@ -71,16 +71,20 @@ string SLL::pop() {  //!O(1)
 }
 
 //aq
-class SKL{ 
-    //tiene una arreglo de listas una picha asi
-    int K ;  //cantidad de niveles 
-    int P ; //ramdomizer 
-    //puedo tener una lsita que tenga como valor de nodos a otra la Sll , o puedo tener el arreglo como tal xd , que no se como putas accesar cada lista por tal . si, es un arreglo pero qwea con el tamano
-    
-    SKL(int k, int p ){
-        K = k ;
-        P=p;
-        SLL hello [K] ; 
-    };
+class SKL { 
+public:
+    int K;  // niveles
+    int P;  // randomizer
+    SLL* levels; // arreglo dinámico de listas
 
+    SKL(int k, int p) {
+        K = k;
+        P = p;
+        levels = new SLL[K]; // ahora sí persiste
+    }
+
+    ~SKL() {
+        delete[] levels;
+    }
 };
+    
