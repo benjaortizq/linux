@@ -78,7 +78,7 @@ public:
     int K;  // niveles
     double P;  // randomizer
     SLL* levels; // arreglo de SLL
-    int Hl = 0 ; //nivel mas alto 
+    int Hl = 0 ; //nivel mas alto que tiene nodo 
 
     SKL(int k, int p) {
         K = k; //cantidad de niveles
@@ -91,22 +91,36 @@ public:
 };
 
 void SKL::add(string val, int prio) {
-    // Arreglo para guardar los nodos donde haremos inserción en cada nivel
+    // Arreglo para guardar los nodos donde se hace iuns
     Node* update[K];
     
-    // Empezar desde el nivel más alto
+    // Empezar desde mas alto 
     Node* curr = nullptr;
     for (int lvl = Hl; lvl >= 0; lvl--) {
-        if (!curr) curr = levels[lvl].head;
+        if (lvl == Hl) {
+            curr = levels[lvl].head;  // Solo en el nivel más alto empezamos desde el principio
+        } else if (!curr || !curr->down) {
+            // Si no hay nodo actual o no tiene bajada, empezar desde donde quedamos en el nivel anterior
+            // y buscar el punto de entrada en este nivel
+            Node* prev = nullptr;
+            Node* temp = levels[lvl].head;
+            while (temp && temp->pr >= curr->pr) {
+                prev = temp;
+                temp = temp->next;
+            }
+            curr = prev ? prev : levels[lvl].head;
+        } else {
+            curr = curr->down;  // Bajar al siguiente nivel desde donde estamos
+        }
         
-        // Avanzar en este nivel mientras la prioridad sea menor
+        // Avanzar en este nivel mientras sea necesario
         while (curr && curr->next && curr->next->pr > prio)
             curr = curr->next;
         
-        update[lvl] = curr; // Guardar dónde insertar en este nivel
-    }
+        update[lvl] = curr;
+}
     
-    // Decidir hasta qué nivel subirá el nuevo nodo
+    // Decidir hasta donde incertar
     int new_level = 0;
     while (new_level < K-1 && random(P))
         new_level++;
@@ -118,25 +132,20 @@ void SKL::add(string val, int prio) {
         Hl = new_level;
     }
     
-    // Crear el nuevo nodo y enlazarlo en cada nivel
     Node* down_ptr = nullptr;
     for (int lvl = 0; lvl <= new_level; lvl++) {
         Node* new_node = new Node();
         new_node->name = val;
         new_node->pr = prio;
         
-        // Insertar el nodo en la lista de este nivel
         if (update[lvl] == nullptr) {
-            // Insertar al inicio
             new_node->next = levels[lvl].head;
             levels[lvl].head = new_node;
         } else {
-            // Insertar después de update[lvl]
             new_node->next = update[lvl]->next;
             update[lvl]->next = new_node;
         }
         
-        // Enlazar con el nivel inferior
         new_node->down = down_ptr;
         down_ptr = new_node;
     }
@@ -144,9 +153,8 @@ void SKL::add(string val, int prio) {
 
 string SKL::pop() {
     if (Hl < 0) return "";
-    // Simplemente toma el primer elemento del nivel más alto
     string result = levels[Hl].pop();
-    // Actualiza Hl si quedó vacío
+    // Actualiza Hl si vacio
     while (Hl >= 0 && levels[Hl].head == nullptr) Hl--;
     return result;
 }
