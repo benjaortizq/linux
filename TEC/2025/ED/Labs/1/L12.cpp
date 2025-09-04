@@ -70,21 +70,43 @@ string SLL::pop() {  //!O(1)
     return tmp;
 }
 
-//aq
+bool random(double pos) {
+    double r = (double)rand() / RAND_MAX;
+    return r < pos; }
 class SKL { 
 public:
     int K;  // niveles
-    int P;  // randomizer
-    SLL* levels; // arreglo dinámico de listas
+    double P;  // randomizer
+    SLL* levels; // arreglo de SLL
+    int Hl = 0 ; //nivel mas alto 
 
     SKL(int k, int p) {
-        K = k;
-        P = p;
-        levels = new SLL[K]; // ahora sí persiste
+        K = k; //cantidad de niveles
+        P = p; //probabilidad
+        levels = new SLL[K]; // ahora FUNCA
     }
-
-    ~SKL() {
-        delete[] levels;
+    void SKL::add(string val, int prio) {
+    Node* down_node = nullptr;
+    for (int lvl = 0; lvl < K; ++lvl) {
+        if (lvl == 0 || random(P)) {
+            Node* new_node = new Node();
+            new_node->name = val;
+            new_node->pr = prio;
+            new_node->down = down_node;
+            new_node->next = nullptr;
+            levels[lvl].add(val, prio);
+            // Buscar el nodo recién insertado en el nivel actual
+            Node* curr = levels[lvl].head;
+            while (curr && curr->name != val) curr = curr->next;
+            if (curr) curr->down = down_node;
+            down_node = curr;
+            Hl = max(Hl, lvl);
+        } else {
+            break;
+        }
     }
+}
+        
 };
-    
+
+
