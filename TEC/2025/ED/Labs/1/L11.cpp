@@ -79,11 +79,6 @@ int main() {
     ifstream archivo(in);
     string linea;
 
-    getline(archivo, linea);
-    //se recorre toda la linea en busqueda de el K y el P al inicio, despues se corre las instrucciones normalmente . si es V hace pop, si es algo otro tons lee y asi . el primer elemento es el P y el otro es el K 
-    size_t pos = linea.find(' ');
-    int K = stoi(linea.substr(0, pos));  // Primer número es K
-    double P = stod(linea.substr(pos+1));  // Segundo número es P
     
     SLL lista ;
     
