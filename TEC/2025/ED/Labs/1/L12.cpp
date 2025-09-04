@@ -85,28 +85,68 @@ public:
         P = p; //probabilidad
         levels = new SLL[K]; // ahora FUNCA
     }
-    void SKL::add(string val, int prio) {
-    Node* down_node = nullptr;
-    for (int lvl = 0; lvl < K; ++lvl) {
-        if (lvl == 0 || random(P)) {
-            Node* new_node = new Node();
-            new_node->name = val;
-            new_node->pr = prio;
-            new_node->down = down_node;
-            new_node->next = nullptr;
-            levels[lvl].add(val, prio);
-            // Buscar el nodo recién insertado en el nivel actual
-            Node* curr = levels[lvl].head;
-            while (curr && curr->name != val) curr = curr->next;
-            if (curr) curr->down = down_node;
-            down_node = curr;
-            Hl = max(Hl, lvl);
-        } else {
-            break;
-        }
-    }
-}
+    void add(string val, int prio);
+    string SKL::pop()
         
 };
 
+void SKL::add(string val, int prio) {
+    // Arreglo para guardar los nodos donde haremos inserción en cada nivel
+    Node* update[K];
+    
+    // Empezar desde el nivel más alto
+    Node* curr = nullptr;
+    for (int lvl = Hl; lvl >= 0; lvl--) {
+        if (!curr) curr = levels[lvl].head;
+        
+        // Avanzar en este nivel mientras la prioridad sea menor
+        while (curr && curr->next && curr->next->pr > prio)
+            curr = curr->next;
+        
+        update[lvl] = curr; // Guardar dónde insertar en este nivel
+    }
+    
+    // Decidir hasta qué nivel subirá el nuevo nodo
+    int new_level = 0;
+    while (new_level < K-1 && random(P))
+        new_level++;
+        
+    // Actualizar Hl si es necesario
+    if (new_level > Hl) {
+        for (int i = Hl+1; i <= new_level; i++)
+            update[i] = nullptr;
+        Hl = new_level;
+    }
+    
+    // Crear el nuevo nodo y enlazarlo en cada nivel
+    Node* down_ptr = nullptr;
+    for (int lvl = 0; lvl <= new_level; lvl++) {
+        Node* new_node = new Node();
+        new_node->name = val;
+        new_node->pr = prio;
+        
+        // Insertar el nodo en la lista de este nivel
+        if (update[lvl] == nullptr) {
+            // Insertar al inicio
+            new_node->next = levels[lvl].head;
+            levels[lvl].head = new_node;
+        } else {
+            // Insertar después de update[lvl]
+            new_node->next = update[lvl]->next;
+            update[lvl]->next = new_node;
+        }
+        
+        // Enlazar con el nivel inferior
+        new_node->down = down_ptr;
+        down_ptr = new_node;
+    }
+}
 
+string SKL::pop() {
+    if (Hl < 0) return "";
+    // Simplemente toma el primer elemento del nivel más alto
+    string result = levels[Hl].pop();
+    // Actualiza Hl si quedó vacío
+    while (Hl >= 0 && levels[Hl].head == nullptr) Hl--;
+    return result;
+}
