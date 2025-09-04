@@ -81,7 +81,7 @@ class SKL {
     SLL* levels; // arreglo de SLL
     int Hl = 0 ; //nivel mas alto que tiene nodo 
 
-    SKL(int k, int p) {
+    SKL(int k, double p) {
         K = k; //cantidad de niveles
         P = p; //probabilidad
         levels = new SLL[K]; // ahora FUNCA
