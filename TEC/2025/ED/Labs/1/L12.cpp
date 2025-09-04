@@ -1,5 +1,6 @@
 //!este que viene es bonitamente jodido ; osea una skipped list 
 #include <iostream>
+#include <fstream>
 using namespace std ; 
 
 class Node { 
@@ -157,4 +158,21 @@ string SKL::pop() {
     // Actualiza Hl si vacio
     while (Hl >= 0 && levels[Hl].head == nullptr) Hl--;
     return result;
+}
+
+
+
+int main() {
+    string in ; 
+    getline(cin , in );
+    ifstream archivo(in);
+    string linea;
+    int c =0;
+    getline(archivo, linea);
+    //se recorre toda la linea en busqueda de el K y el P al inicio, despues se corre las instrucciones normalmente . si es V hace pop, si es algo otro tons lee y asi 
+    
+    // 5. Cerrar el archivo
+    archivo.close();
+    
+    return 0;
 }
