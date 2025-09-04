@@ -1,5 +1,6 @@
 //benchmark cola de prioridad 
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 //todo : Crear una cola de prioridad con/ SLL
@@ -72,5 +73,39 @@ string SLL::pop() {  //!O(1)
     return tmp;
 }
 
-//aqui vienen los lectores de entrada 
-//lee desde 0 hasta N , si encuentra espacio ese es el primer  tokenm hasta antes del espacio . se vuelve name . lo que sigue se hace un recorrido hstata el leng . se hace stoi y sigue . 
+int main() {
+    string in ; 
+    getline(cin , in );
+    ifstream archivo(in);
+    string linea;
+
+    getline(archivo, linea);
+    //se recorre toda la linea en busqueda de el K y el P al inicio, despues se corre las instrucciones normalmente . si es V hace pop, si es algo otro tons lee y asi . el primer elemento es el P y el otro es el K 
+    size_t pos = linea.find(' ');
+    int K = stoi(linea.substr(0, pos));  // Primer número es K
+    double P = stod(linea.substr(pos+1));  // Segundo número es P
+    
+    SLL lista ;
+    
+    // Procesa el resto de líneas
+    while (getline(archivo, linea)) {
+        if (linea[0] == 'V') {
+            // Es un pop
+            string resultado = lista.pop();
+            cout << resultado << endl;
+        } 
+        else {
+            // Es un add 
+            size_t espacio = linea.find(' ');//
+            string nombre = linea.substr(0, espacio); //nom,bre de la wea 
+            int prioridad = stoi(linea.substr(espacio+1)); //
+            lista.add(nombre, prioridad);
+        }
+    } 
+
+    
+    // 5. Cerrar el archivo
+    archivo.close();
+    
+    return 0;
+}
