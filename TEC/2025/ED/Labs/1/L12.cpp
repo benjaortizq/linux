@@ -87,7 +87,7 @@ class SKL {
         levels = new SLL[K]; // ahora FUNCA
     }
     void add(string val, int prio);
-    string SKL::pop();
+    string pop();
         
 };
 
@@ -150,7 +150,7 @@ void SKL::add(string val, int prio) {
         new_node->down = down_ptr;
         down_ptr = new_node;
     }
-}
+};
 
 string SKL::pop() {
     if (Hl < 0) return "";
@@ -164,25 +164,20 @@ string SKL::pop() {
 
 int main() {
     string in ; 
-    getline(cin , in );
+    cin >> in ;
     ifstream archivo(in);
     string linea;
-
-    getline(archivo, linea);
-    //se recorre toda la linea en busqueda de el K y el P al inicio, despues se corre las instrucciones normalmente . si es V hace pop, si es algo otro tons lee y asi . el primer elemento es el P y el otro es el K 
-    size_t pos = linea.find(' ');
-    int K = stoi(linea.substr(0, pos));  // Primer número es K
-    double P = stod(linea.substr(pos+1));  // Segundo número es P
-    
-    // Crea la SKL con K y P
-    SKL lista(K, P);
-    
-    // Procesa el resto de líneas
+    int K=4;
+    double P= 0.75;
+    SKL  lista (K,P); 
+    clock_t start = clock();
     while (getline(archivo, linea)) {
         if (linea[0] == 'V') {
             // Es un pop
             string resultado = lista.pop();
             cout << resultado << endl;
+            
+
         } 
         else {
             // Es un add 
@@ -192,9 +187,9 @@ int main() {
             lista.add(nombre, prioridad);
         }
     } 
-
-    
-    //  Cerrar el archivo
+    clock_t end = clock();
+    double elapsed = double(end - start) / CLOCKS_PER_SEC ;
+    cout << "TIEMPO: " <<fixed<< elapsed << " segundos\n";
+    // Cerrar el archivo
     archivo.close();
-
 }

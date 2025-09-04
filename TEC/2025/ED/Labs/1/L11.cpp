@@ -81,15 +81,13 @@ int main() {
     string linea;
     SLL lista ; //crea nueva lsita 
     // Procesa el resto de líneas
+    clock_t start = clock();
     while (getline(archivo, linea)) {
-        clock_t start = clock();
         if (linea[0] == 'V') {
             // Es un pop
             string resultado = lista.pop();
-            clock_t end = clock();
             cout << resultado << endl;
-            double elapsed = double(end - start) / CLOCKS_PER_SEC ;
-            cout << "pop: " << elapsed << " segundos\n";
+            
 
         } 
         else {
@@ -98,12 +96,11 @@ int main() {
             string nombre = linea.substr(0, espacio); //nom,bre de la wea 
             int prioridad = stoi(linea.substr(espacio+1)); //
             lista.add(nombre, prioridad);
-            clock_t end = clock();
-            double elapsed = double(end - start) / CLOCKS_PER_SEC ;
-            cout << "add: " << elapsed << " segundos\n";
-
         }
     } 
+    clock_t end = clock();
+    double elapsed = double(end - start) / CLOCKS_PER_SEC ;
+    cout << "TIEMPO: " <<fixed<< elapsed << " segundos\n";
     // Cerrar el archivo
     archivo.close();
 }
