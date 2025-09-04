@@ -194,8 +194,7 @@ int main() {
     } 
 
     
-    // 5. Cerrar el archivo
+    //  Cerrar el archivo
     archivo.close();
-    
-    return 0;
+
 }

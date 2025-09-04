@@ -102,10 +102,6 @@ int main() {
             lista.add(nombre, prioridad);
         }
     } 
-
-    
-    // 5. Cerrar el archivo
+    // Cerrar el archivo
     archivo.close();
-    
-    return 0;
 }
