@@ -86,7 +86,7 @@ public:
         levels = new SLL[K]; // ahora FUNCA
     }
     void add(string val, int prio);
-    string SKL::pop()
+    string SKL::pop();
         
 };
 
