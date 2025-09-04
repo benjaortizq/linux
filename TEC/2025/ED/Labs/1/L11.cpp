@@ -1,6 +1,7 @@
 //benchmark cola de prioridad 
 #include <iostream>
 #include <fstream>
+#include <ctime>
 using namespace std;
 
 //todo : Crear una cola de prioridad con/ SLL
@@ -75,19 +76,21 @@ string SLL::pop() {  //!O(1)
 
 int main() {
     string in ; 
-    getline(cin , in );
+    cin >> in ;
     ifstream archivo(in);
     string linea;
-
-    
-    SLL lista ;
-    
+    SLL lista ; //crea nueva lsita 
     // Procesa el resto de líneas
     while (getline(archivo, linea)) {
+        clock_t start = clock();
         if (linea[0] == 'V') {
             // Es un pop
             string resultado = lista.pop();
+            clock_t end = clock();
             cout << resultado << endl;
+            double elapsed = double(end - start) / CLOCKS_PER_SEC ;
+            cout << "pop: " << elapsed << " segundos\n";
+
         } 
         else {
             // Es un add 
@@ -95,6 +98,10 @@ int main() {
             string nombre = linea.substr(0, espacio); //nom,bre de la wea 
             int prioridad = stoi(linea.substr(espacio+1)); //
             lista.add(nombre, prioridad);
+            clock_t end = clock();
+            double elapsed = double(end - start) / CLOCKS_PER_SEC ;
+            cout << "add: " << elapsed << " segundos\n";
+
         }
     } 
     // Cerrar el archivo
