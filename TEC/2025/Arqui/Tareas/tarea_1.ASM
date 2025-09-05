@@ -31,7 +31,7 @@ Else_fact #proc
     jr $ra
 #revisar esta mierda , que se me fue hacerla el else y exit. 
 
-suma 
+suma #revisar lo que hay en psp. 
 
 
 main 
