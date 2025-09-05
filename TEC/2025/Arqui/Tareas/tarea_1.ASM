@@ -24,4 +24,9 @@ jal Factorial
 lw $ra  0($sp)
 addi $sp , $sp , 4
 exit
+mult	$t0, $v0
+add $v0 , $zero , $lo
+lw $t0 , 0($sp)
+addi $sp , $sp , 4
+jr $ra
 
