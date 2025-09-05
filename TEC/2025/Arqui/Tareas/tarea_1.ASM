@@ -44,4 +44,10 @@ main
     li $t1 , 70 #F
     beq $t0 , $t1 , Factorial
     li $v0 , 83 #s
+    beq $s0 , $t1 , suma
+    j exit
+
+exit
+    li $v0 , 10
+    syscall
 
