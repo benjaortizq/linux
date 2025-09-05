@@ -1,0 +1,332 @@
+Alice 51
+Bob 115
+Carol 98
+David 37
+Eve 1
+Frank 32
+Grace 11
+Hank 118
+Ivy 92
+Jack 225
+Kara 224
+Leo 125
+Mia 164
+Nina 241
+Oscar 228
+Paul 157
+Quinn 284
+Rita 194
+Sam 112
+Tina 42
+Uma 295
+Victor 95
+Wendy 233
+Xander 146
+Yara 200
+Zane 190
+Anna 175
+Ben 99
+Clara 191
+Derek 8
+Ella 43
+Fred 204
+Gina 138
+Harry 97
+Isla 2
+Jake 268
+Lily 113
+Mark 78
+Nora 259
+Owen 122
+Pam 6
+Quincy 23
+Rose 242
+Steve 65
+Tracy 34
+Ulysses 185
+Vera 296
+Will 248
+Xena 274
+Yanni 260
+Zoe 41
+Adam 135
+Bella 25
+Cody 250
+Diana 89
+Eli 132
+Fiona 214
+George 82
+Holly 124
+Ian 86
+Alice 120
+Bob 35
+Carol 280
+David 217
+Eve 262
+Frank 76
+Grace 151
+Hank 44
+Ivy 60
+V
+Jack 87
+Kara 244
+Leo 266
+Mia 235
+Nina 287
+Oscar 143
+Paul 90
+Quinn 221
+Rita 165
+Sam 278
+Tina 276
+Uma 257
+Victor 251
+Wendy 20
+Xander 179
+Yara 114
+Zane 282
+Anna 46
+Ben 208
+Clara 137
+Derek 102
+Ella 39
+Fred 121
+Gina 85
+Harry 68
+Isla 64
+V
+Jake 123
+Lily 140
+Mark 265
+Nora 4
+Owen 155
+Pam 206
+Quincy 289
+Rose 273
+Steve 141
+Tracy 189
+Ulysses 52
+Vera 83
+Will 77
+Xena 154
+V
+V
+V
+Yanni 21
+Zoe 117
+Adam 256
+Bella 270
+Cody 196
+Diana 205
+Eli 110
+Fiona 173
+George 109
+Holly 207
+Ian 220
+Alice 126
+Bob 40
+Carol 56
+David 264
+Eve 199
+V
+Frank 239
+Grace 48
+Hank 177
+Ivy 182
+Jack 269
+Kara 53
+Leo 203
+V
+Mia 105
+Nina 267
+Oscar 26
+Paul 298
+Quinn 47
+V
+Rita 136
+Sam 192
+V
+V
+Tina 285
+Uma 30
+Victor 88
+Wendy 17
+Xander 230
+Yara 292
+Zane 211
+Anna 29
+Ben 101
+Clara 107
+Derek 246
+Ella 290
+Fred 213
+Gina 131
+Harry 170
+Isla 229
+Jake 59
+Lily 176
+Mark 55
+V
+V
+Nora 139
+Owen 5
+Pam 255
+Quincy 103
+Rose 145
+Steve 13
+Tracy 71
+Ulysses 129
+Vera 161
+Will 299
+Xena 94
+Yanni 288
+Zoe 286
+Adam 111
+Bella 234
+Cody 195
+Diana 243
+Eli 231
+Fiona 226
+V
+V
+George 49
+Holly 100
+Ian 218
+Alice 183
+Bob 62
+Carol 57
+David 127
+Eve 252
+Frank 171
+Grace 187
+Hank 116
+Ivy 67
+Jack 167
+Kara 186
+Leo 96
+Mia 18
+Nina 174
+Oscar 79
+Paul 91
+Quinn 159
+V
+Rita 63
+Sam 24
+Tina 156
+Uma 222
+Victor 58
+Wendy 209
+Xander 271
+Yara 297
+Zane 33
+Anna 133
+Ben 253
+V
+Clara 149
+Derek 72
+Ella 9
+Fred 153
+Gina 184
+Harry 130
+Isla 54
+Jake 237
+Lily 80
+Mark 212
+Nora 219
+V
+Owen 81
+Pam 216
+Quincy 232
+Rose 19
+Steve 12
+Tracy 180
+Ulysses 10
+V
+V
+V
+Vera 201
+Will 193
+Xena 291
+Yanni 66
+Zoe 128
+Adam 279
+Bella 31
+Cody 144
+Diana 215
+Eli 160
+Fiona 108
+George 28
+Holly 27
+Ian 293
+Alice 227
+Bob 172
+Carol 275
+David 178
+Eve 258
+Frank 249
+Grace 84
+Hank 163
+Ivy 210
+Jack 152
+Kara 106
+Leo 294
+Mia 134
+Nina 3
+Oscar 283
+Paul 61
+Quinn 93
+Rita 168
+Sam 22
+Tina 263
+Uma 15
+Victor 300
+Wendy 14
+Xander 254
+Yara 142
+Zane 38
+Anna 150
+V
+Ben 162
+Clara 238
+Derek 245
+Ella 261
+Fred 197
+Gina 272
+Harry 169
+Isla 198
+Jake 70
+Lily 7
+Mark 181
+Nora 36
+Owen 75
+Pam 119
+V
+V
+V
+V
+V
+V
+Quincy 277
+Rose 236
+Steve 147
+Tracy 73
+Ulysses 166
+Vera 45
+Will 202
+Xena 69
+Yanni 223
+Zoe 281
+Adam 16
+Bella 188
+Cody 104
+Diana 240
+Eli 50
+Fiona 74
+V
+V
+V
+V
+V
+George 158
+Holly 148
+Ian 247

@@ -88,7 +88,7 @@ class SKL {
     }
     void add(string val, int prio);
     string pop();
-    void mostrar();
+        
 };
 
 void SKL::add(string val, int prio) {
@@ -160,104 +160,34 @@ string SKL::pop() {
     return result;
 }
 
-void SKL::mostrar() {
-    cout << "\n=== Estado de la Skip List ===\n";
-    for (int i = Hl; i >= 0; i--) {
-        cout << "Nivel " << i << ": ";
-        Node* curr = levels[i].head;
-        while (curr) {
-            cout << "(" << curr->name << "," << curr->pr << ") → ";
-            curr = curr->next;
-        }
-        cout << "nullptr" << endl;
-    }
-    cout << "===========================\n";
-}
 
 
 int main() {
-    int K = 4;
-    double P = 0.25;
-    SKL lista(K, P);
-    
-    int opcion;
-    string nombre;
-    int prioridad;
-    
-    do {
-        cout << "\n==== MENÚ DE SKIP LIST ====\n";
-        cout << "1. Mostrar lista completa\n";
-        cout << "2. Añadir elemento\n";
-        cout << "3. Eliminar elemento de mayor prioridad\n";
-        cout << "4. Cargar operaciones desde archivo\n";
-        cout << "5. Salir\n";
-        cout << "Seleccione una opción: ";
-        cin >> opcion;
-        
-        switch (opcion) {
-            case 1:
-                lista.mostrar();
-                break;
-                
-            case 2:
-                cout << "Ingrese nombre: ";
-                cin >> nombre;
-                cout << "Ingrese prioridad: ";
-                cin >> prioridad;
-                lista.add(nombre, prioridad);
-                cout << "Elemento añadido.\n";
-                break;
-                
-            case 3: {
-                string resultado = lista.pop();
-                if (resultado.empty())
-                    cout << "La lista está vacía.\n";
-                else
-                    cout << "Elemento eliminado: " << resultado << endl;
-                break;
-            }
-                
-            case 4: {
-                string archivo_nombre;
-                cout << "Ingrese nombre del archivo: ";
-                cin >> archivo_nombre;
-                
-                ifstream archivo(archivo_nombre);
-                if (!archivo.is_open()) {
-                    cout << "Error al abrir el archivo.\n";
-                    break;
-                }
-                
-                string linea;
-                clock_t start = clock();
-                while (getline(archivo, linea)) {
-                    if (linea[0] == 'V') {
-                        string resultado = lista.pop();
-                        cout << resultado << endl;
-                    } 
-                    else {
-                        size_t espacio = linea.find(' ');
-                        string nombre = linea.substr(0, espacio);
-                        int prioridad = stoi(linea.substr(espacio+1));
-                        lista.add(nombre, prioridad);
-                    }
-                }
-                clock_t end = clock();
-                double elapsed = double(end - start) / CLOCKS_PER_SEC;
-                cout << "TIEMPO: " << fixed << elapsed << " segundos\n";
-                archivo.close();
-                break;
-            }
-                
-            case 5:
-                cout << "Saliendo del programa.\n";
-                break;
-                
-            default:
-                cout << "Opción inválida. Intente de nuevo.\n";
-                break;
+    string in ; 
+    cin >> in ;
+    ifstream archivo(in);
+    string linea;
+    int K=4;
+    double P= 0.75;
+    SKL  lista (K,P); 
+    clock_t start = clock();
+    while (getline(archivo, linea)) {
+        if (linea[0] == 'V') {
+            // Es un pop
+            string resultado = lista.pop();
+            cout << resultado << endl;
+        } 
+        else {
+            // Es un add 
+            size_t espacio = linea.find(' ');//
+            string nombre = linea.substr(0, espacio); //nom,bre de la wea 
+            int prioridad = stoi(linea.substr(espacio+1)); //
+            lista.add(nombre, prioridad);
         }
-    } while (opcion != 5);
-    
-    return 0;
+    } 
+    clock_t end = clock();
+    double elapsed = double(end - start) / CLOCKS_PER_SEC ;
+    cout << "TIEMPO: " <<fixed<< elapsed << " segundos\n";
+    // Cerrar el archivo
+    archivo.close();
 }
